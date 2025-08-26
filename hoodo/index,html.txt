@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hamda — Portfolio</title>
+  <meta name="description" content="Personal portfolio website — HTML & CSS only, fast and deployable on Vercel.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,0.06);
+      --panel-strong: rgba(255,255,255,0.12);
+      --txt: #eef2ff;
+      --muted: #b8c1ff;
+      --brand1: #7c3aed; /* violet */
+      --brand2: #22d3ee; /* cyan */
+      --accent: #64e87b; /* green */
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius: 22px;
+      --ring: linear-gradient(135deg,var(--brand1),var(--brand2));
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f7f7fb; --panel: rgba(0,0,0,0.04); --panel-strong: rgba(0,0,0,0.08); --txt:#0c1024; --muted:#3a3f66; }
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0; padding:0; background: radial-gradient(1200px 800px at 10% -10%, rgba(124,58,237,.25), transparent), radial-gradient(800px 700px at 100% 10%, rgba(34,211,238,.18), transparent), var(--bg); color:var(--txt); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;}
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1120px; margin-inline:auto; padding: 28px 20px;}
+    header{position:sticky; top:0; backdrop-filter: blur(10px); background: linear-gradient(to bottom, rgba(11,16,32,.75), rgba(11,16,32,.2)); border-bottom:1px solid var(--panel-strong); z-index:50}
+    header .wrap{display:flex; align-items:center; justify-content:space-between; gap:18px}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.3px}
+    .logo{
+      width:36px; height:36px; border-radius:12px; background: conic-gradient(from 180deg at 50% 50%, var(--brand1), var(--brand2), var(--accent), var(--brand1));
+      box-shadow: inset 0 0 0 4px rgba(255,255,255,.15), 0 8px 20px rgba(34,211,238,.25);
+    }
+    nav a{padding:10px 14px; border-radius:12px; border:1px solid transparent}
+    nav a:hover{background:var(--panel); border-color:var(--panel-strong)}
+
+    /* HERO */
+    .hero{display:grid; grid-template-columns: 1.1fr .9fr; gap:32px; align-items:center; padding-top:38px}
+    @media (max-width: 900px){ .hero{grid-template-columns: 1fr; text-align:center} }
+
+    .profile-card{
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      border:1px solid var(--panel-strong);
+      border-radius: var(--radius);
+      padding: 26px; display:flex; flex-direction:column; gap:18px; box-shadow: var(--shadow);
+    }
+    .avatar-wrap{display:flex; align-items:center; gap:18px;}
+    .avatar{
+      width:88px; height:88px; border-radius:50%; padding:4px; background: var(--ring);
+      box-shadow: 0 8px 26px rgba(124,58,237,.35);
+    }
+    .avatar > .inner{
+      width:100%; height:100%; border-radius:50%; display:grid; place-items:center; background: radial-gradient(60% 60% at 30% 20%, #ffffff, #c7d2fe);
+      color:#111; font-weight:700; font-family:Poppins, Inter, sans-serif; font-size:28px;
+    }
+    .titles h1{margin:0; font: 700 42px/1.1 Poppins, Inter, sans-serif}
+    .titles p{margin:6px 0 0; color:var(--muted)}
+
+    .cta{display:flex; gap:12px; flex-wrap:wrap; justify-content:flex-start}
+    @media (max-width: 900px){ .cta{justify-content:center} }
+    .btn{padding:12px 16px; border-radius:14px; border:1px solid var(--panel-strong); background:var(--panel); backdrop-filter: blur(6px); font-weight:600}
+    .btn:hover{transform: translateY(-1px);}
+    .btn.primary{background: linear-gradient(135deg,var(--brand1),var(--brand2)); border-color: transparent; color:#0b1020}
+    .btn.ghost{border-style:dashed}
+
+    /* SECTIONS */
+    section{margin-top:54px}
+    .section-title{font: 700 28px/1.1 Poppins, Inter, sans-serif; margin:0 0 14px 0}
+    .panel{background: var(--panel); border:1px solid var(--panel-strong); border-radius: var(--radius); padding:18px}
+
+    /* SKILLS */
+    .skills{display:flex; gap:10px; flex-wrap:wrap}
+    .chip{padding:10px 12px; border-radius:999px; background: rgba(124,58,237,.12); border:1px solid rgba(124,58,237,.35); font-weight:600}
+
+    /* PROJECTS */
+    .grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px}
+    @media (max-width: 1000px){ .grid{grid-template-columns: repeat(2, 1fr)} }
+    @media (max-width: 640px){ .grid{grid-template-columns: 1fr} }
+    .card{position:relative; overflow:hidden; border-radius: 20px; background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02)); border:1px solid var(--panel-strong); box-shadow: var(--shadow)}
+    .card .thumb{height:160px; background:
+      radial-gradient(400px 200px at 0% 0%, rgba(124,58,237,.35), transparent),
+      radial-gradient(400px 260px at 100% 100%, rgba(34,211,238,.35), transparent),
+      linear-gradient(135deg, rgba(255,255,255,.25), rgba(255,255,255,.1));}
+    .card .body{padding:16px 16px 18px}
+    .tag{display:inline-block; font-size:12px; padding:6px 10px; border-radius:999px; background: rgba(34,211,238,.14); border:1px solid rgba(34,211,238,.4); margin-bottom:10px}
+    .card h3{margin:8px 0 6px; font-weight:700}
+    .card p{margin:0; color:var(--muted)}
+    .card .links{display:flex; gap:10px; margin-top:12px}
+    .link{font-weight:700; padding:10px 12px; border-radius:12px; border:1px solid var(--panel-strong)}
+    .link:hover{background:var(--panel)}
+
+    /* ABOUT */
+    .about{display:grid; grid-template-columns: .8fr 1.2fr; gap:18px}
+    @media (max-width: 900px){ .about{grid-template-columns: 1fr} }
+
+    /* CONTACT */
+    .contact{display:grid; grid-template-columns: 1fr 1fr; gap:16px}
+    @media (max-width: 800px){ .contact{grid-template-columns: 1fr} }
+    .contact .card{padding:18px}
+    .contact a{display:inline-block}
+
+    footer{margin-top:48px; padding:26px 0 40px; color:var(--muted); border-top:1px dashed var(--panel-strong); text-align:center}
+
+    /* nice focus outlines */
+    :where(a,button,.btn,.link):focus-visible{outline: 3px solid var(--accent); outline-offset: 3px}
+    html{scroll-behavior:smooth}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container wrap">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <a href="#top" class="name">Hamda Mahamoud-portfolio </a>
+      </div>
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <section class="hero">
+      <div class="titles">
+        <h1>Hi, I’m <span style="background:var(--ring);-webkit-background-clip:text;background-clip:text;color:transparent">Hamda</span></h1>
+        <p>Frontend Developer • UI Craftsman • Open‑Source Enthusiast</p>
+        <div class="cta" style="margin-top:16px">
+          <a class="btn primary" href="https://your-app.vercel.app" target="_blank" rel="noopener">View Vercel App</a>
+          <a class="btn" href="#projects">See Projects</a>
+          <a class="btn ghost" href="mailto:you@example.com">Email Me</a>
+        </div>
+      </div>
+
+      <aside class="profile-card">
+        <div class="avatar-wrap">
+          <div class="avatar" aria-hidden="true">
+            <div class="inner"><small>Hamda</small></div>
+          </div>
+          <div>
+            <div style="font-weight:700; font-size:18px">Hamda Mahamoud</div>
+            <div style="color:var(--muted)">@xamdalucky693.com</div>
+          </div>
+        </div>
+        <p style="margin:0">I build fast, accessible, and beautiful web experiences. I care about clean design, performance, and delightful details.</p>
+        <div class="skills">
+          <span class="chip">HTML5</span>
+          <span class="chip">CSS and python</span>
+          <span class="chip">Responsive networking</span>
+          <span class="chip">cloth designer=profisional</span>
+          <span class="chip">graphic Designer</span>
+        </div>
+      </aside>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="thumb"></div>
+          <div class="body">
+            <span class="tag">Landing Page</span>
+            <h3>Glow Studio</h3>
+            <p>Elegant marketing page with glassmorphism and smooth visuals, built with semantic HTML and modern CSS.</p>
+            <div class="links">
+              <a class="link" href="https://your-app.vercel.app/glow" target="_blank" rel="noopener">Live</a>
+              <a class="link" href="https://github.com/yourname/glow" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb"></div>
+          <div class="body">
+            <span class="tag">Portfolio</span>
+            <h3>Minimal Personal Site</h3>
+            <p>One‑page portfolio optimized for Core Web Vitals and mobile first responsive layout.</p>
+            <div class="links">
+              <a class="link" href="https://your-app.vercel.app/portfolio" target="_blank" rel="noopener">Live</a>
+              <a class="link" href="https://github.com/yourname/portfolio" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb"></div>
+          <div class="body">
+            <span class="tag">Component Library</span>
+            <h3>Pure CSS UI Kit</h3>
+            <p>A tiny, utility‑style CSS kit featuring buttons, chips, cards, and layout helpers — no JS.</p>
+            <div class="links">
+              <a class="link" href="https://xamdalucky.vercel.app/uikit" target="_blank" rel="noopener">Live</a>
+              <a class="link" href="https://github.com/yourname/uikit" target="_blank" rel="noopener">Code</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="panel">
+        <h2 class="section-title">About Me</h2>
+        <p>Hey! I’m a frontend developer who loves crafting crisp . I work with design systems.</p>
+        <p>Outside of code, I enjoy exploring typography, color theory, and creating small tools that make the web more delightful.</p>
+      </div>
+      <div class="panel">
+        <h2 class="section-title">Eduction</h2>
+        <ul>
+          <li>⚡studied at primary OMAR BINU ABDIL-AZIZ in 2016-2023 </li>
+          <li>🎯 Successfull for design for cloth tutorial</li>
+          <li>🧩 in secondary I study in Emirate secondary</li>
+          <li>🚀 Deployed  site on Vercel</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact">
+        <div class="card">
+          <h3 style="margin:0 0 6px">Email</h3>
+          <a class="link" href="mailto:you@xamdaluck693.com">you@xamdalucky693.com</a>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 6px">Social</h3>
+          <div class="links">
+            <a class="link" href="https://github.com/yourname" target="_blank" rel="noopener">GitHub</a>
+            <a class="link" href="https://twitter.com/yourname" target="_blank" rel="noopener">Twitter</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year">2025</span> Hamda Mahamoud. Built with HTML & CSS. Deployed on Vercel.
+    </footer>
+  </main>
+</body>
+</html>

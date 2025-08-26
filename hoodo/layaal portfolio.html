@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>xamdalucky693-oss lucky Mahamoud-portfolio</title>
+  <meta name="description" content="Portfolio of Your Name — projects, skills, and contact information." />
+  <meta name="color-scheme" content="light dark" />
+  <!-- Open Graph (share preview) -->
+  <meta property="og:title" content="Your Name — Portfolio" />
+  <meta property="og:description" content="Projects, skills, and ways to contact me." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="download.jpeg" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <a href="https://github.com/xamdalucky693-oss/layaal.git" target="_blank" rel="noopener noreferrer">
+</a>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- CSS RESET (trimmed) ---------- */
+    *,*::before,*::after{box-sizing:border-box}
+    html:focus-within{scroll-behavior:smooth}
+    body,h1,h2,h3,h4,p,figure,blockquote,dl,dd{margin:0}
+    ul[role='list'],ol[role='list']{list-style:none;margin:0;padding:0}
+    body{min-height:100vh;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    :root{--bg: #1a40d7;--bg-elev:#1f3b8d;--text:#0d3b98;--muted:#1d1dc2;--brand:#6ee7b7;--brand-2:#60a5fa;--border:#193b8a;--chip:#1656b0;--card:#113799;--shadow: 0 10px 30px rgba(0,0,0,.35)}
+    :root.light{--bg:#ffffff;--bg-elev:#f8fafc;--text:#113f9c;--muted:#154c9a;--brand:#059669;--brand-2:#2563eb;--border:#205fde;--chip:#1e4eec;--card:#dfe0e3;--shadow:0 10px 25px rgba(2,6,23,.08)}
+    @media (prefers-color-scheme: light){:root{--bg:#ffffff;--bg-elev:#0d6ac8;--text:#0b1220;--muted:#4b5563;--brand:#059669;--brand-2:#2563eb;--border:#e0e3eb;--chip:#f9fafc;--card:#e9ebee;--shadow:0 10px 25px rgba(2,6,23,.08)}}
+    /* ---------- Base ---------- */
+    body{font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; background:linear-gradient(180deg,var(--bg),#0b0d12 50%,var(--bg)) fixed;color:var(--text)}
+    .container{width:min(1100px,92%);margin-inline:auto}
+    .section{padding:clamp(48px,6vw,84px) 0}
+    .grid{display:grid;gap:clamp(16px,2.4vw,28px)}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.8rem 1.1rem;border-radius:999px;border:1px solid var(--border);background:linear-gradient(180deg,var(--chip),transparent);box-shadow:var(--shadow);font-weight:600}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#041016;border-color:transparent}
+    .btn-ghost{background:transparent}
+    .chip{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .7rem;border-radius:999px;border:1px solid var(--border);background:var(--chip);font-size:.875rem;color:var(--muted)}
+    .muted{color:var(--muted)}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:clamp(16px,2vw,24px);box-shadow:var(--shadow)}
+    .shadow{box-shadow:var(--shadow)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    /* ---------- Header / Nav ---------- */
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(12px);background:rgba(10,12,17,.55);border-bottom:1px solid var(--border);z-index:50}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:64px}
+    .brand{font-weight:800;letter-spacing:.3px;font-size:1rem}
+    .brand em{font-style:normal;background:linear-gradient(90deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .nav-links{display:flex;gap:.75rem;align-items:center}
+    .nav-links a{padding:.55rem .8rem;border-radius:12px;border:1px solid transparent}
+    .nav-links a:hover{border-color:var(--border);background:var(--bg-elev)}
+    /* Mobile menu (CSS only) */
+    #menu-toggle{display:none}
+    .menu-button{display:none}
+    @media (max-width: 720px){
+      .menu-button{display:inline-flex}
+      .nav-links{position:fixed;inset:64px 0 auto 0;background:var(--bg);border-bottom:1px solid var(--border);padding:12px;display:grid;gap:8px;transform:translateY(-120%);transition:transform .25s ease}
+      #menu-toggle:checked + label + .nav-links{transform:translateY(0)}
+    }
+
+    /* ---------- Hero ---------- */
+    .hero{display:grid;grid-template-columns:1.35fr .9fr;gap:clamp(18px,3.5vw,42px);align-items:center}
+    .hero h1{font-size:clamp(1.8rem,4.6vw,3.4rem);line-height:1.1;font-weight:800}
+    .hero p{font-size:clamp(1rem,1.45vw,1.15rem);color:var(--muted)}
+    .hero .actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:16px}
+    .portrait{aspect-ratio:1/1;border-radius:22px;overflow:hidden;border:1px solid var(--border);background:linear-gradient(135deg,#1040af,#0e388b);position:relative}
+    .portrait img{width:100%;height:100%;object-fit:cover}
+    .badge-stack{position:absolute;bottom:12px;left:12px;display:flex;gap:6px;flex-wrap:wrap}
+
+    @media (max-width: 960px){ .hero{grid-template-columns:1fr;}}
+
+    /* ---------- Section headings ---------- */
+    .section h2{font-size:clamp(1.35rem,2.6vw,1.8rem);font-weight:800;margin-bottom:14px}
+    .section .lead{color:var(--muted);margin-bottom:22px}
+
+    /* ---------- About ---------- */
+    .about{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(16px,3vw,28px)}
+    @media (max-width: 860px){ .about{grid-template-columns:1fr}}
+
+    /* ---------- Skills ---------- */
+    .skills{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .skill{padding:16px;border-radius:14px;border:1px solid var(--border);background:var(--bg-elev)}
+    .skill h3{font-size:1rem;margin-bottom:6px}
+    @media (max-width:900px){.skills{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:520px){.skills{grid-template-columns:1fr}}
+
+    /* ---------- Projects ---------- */
+    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,20px)}
+    .project{overflow:hidden;display:grid;gap:12px}
+    .project .thumb{aspect-ratio:16/10;border-radius:14px;overflow:hidden;border:1px solid var(--border);background:linear-gradient(135deg,#0b1220,#101826)}
+    .project .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+    .project:hover .thumb img{transform:scale(1.05)}
+    .project h3{font-size:1.05rem}
+    .project .tags{display:flex;gap:6px;flex-wrap:wrap}
+    .project .tags .chip{background:transparent}
+    @media (max-width:1020px){.projects{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.projects{grid-template-columns:1fr}}
+
+    /* ---------- Experience ---------- */
+    .timeline{display:grid;gap:16px}
+    .item{display:grid;grid-template-columns:auto 1fr;gap:14px;border:1px solid var(--border);border-radius:14px;padding:14px;}
+    .item .dot{width:12px;height:12px;border-radius:999px;;margin-top:6px}
+    .item h3{font-size:1rem}
+    .item .meta{font-size:.9rem;color:var(--muted)}
+
+    /* ---------- Contact ---------- */
+    .contact-card{display:grid;gap:14px;align-items:center;grid-template-columns:1.2fr .8fr}
+    .contact-card .panel{border:1px dashed var(--border);border-radius:16px;padding:16px}
+    .contact-links{display:flex;gap:10px;flex-wrap:wrap}
+    @media (max-width:860px){.contact-card{grid-template-columns:1fr}}
+
+    /* ---------- Footer ---------- */
+    footer{padding:36px 0;border-top:1px solid var(--border);color:var(--muted)}
+
+    /* ---------- Utility ---------- */
+    .pill{border-radius:999px}
+    .center{display:grid;place-items:center}
+    .right{justify-content:flex-end}
+
+    /* ---------- Reduced Motion ---------- */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none!important;transition:none!important}
+      html:focus-within{scroll-behavior:auto}
+    }
+
+    /* ---------- Print ---------- */
+    @media print{
+      header,.actions, .nav-links{display:none!important}
+      .card, .item, .skill{break-inside:avoid}
+      body{background:#b71f1f;color:#f0f1f3}
+    }
+  </style>
+</head>
+<body >
+  <a class="sr-only" href="#main">Skip to content</a>
+  <header>
+    <div class="container">
+      <nav aria-label="Main">
+        <div class="brand"><a href="#top" aria-label="Home"><em>Hamda</em> Mahamoud</a></div>
+        <input type="checkbox" id="menu-toggle" aria-hidden="true">
+        <label for="menu-toggle" class="menu-button btn btn-ghost" aria-label="Toggle menu">☰</label>
+        <div class="nav-links" role="list">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+          <a href="resume.pdf" target="_blank" rel="noopener" class="btn btn-primary">Download Résumé</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <!-- HERO -->
+    <section class="section hero" id="top" aria-labelledby="intro-title">
+      <div>
+        <p class="chip" aria-label="role"><span>click this </span></p>
+        <h1 id="intro-title">Hi, I’m <span class="brand"><em>Hamda</em> Mahamoud</span> — a front‑end student crafting clean, accessible web experiences.</h1>
+        <p class="lead" style="margin-top:10px">I blend thoughtful UX with modern HTML/CSS to build fast, responsive interfaces. Currently exploring performance, design systems, and CSS architecture.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#projects">See my work</a>
+          <a class="btn" href="#contact">Get in touch</a>
+          <a class="btn btn-ghost" href="https://github.com/hamda" target="_blank" rel="noopener" aria-label="GitHub">GitHub </a>
+        </div>
+      </div>
+      <aside class="portrait card" aria-label="Portrait">
+        <!-- Replace with your image -->
+        <img src="WhatsApp Image 2025-08-19 at 03.23.30_a4a62dab.jpg" alt="Portrait of Your Name" loading="lazy" />
+        <div class="badge-stack">
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">Responsive</span>
+          <span class="chip">graphic design</span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div>
+        <h2 id="about-title">About</h2>
+        <p class="lead">I’m a student web developer who loves turning complex problems into simple, beautiful, and intuitive designs.</p>
+        <div class="grid" style="margin-top:12px">
+          <div class="card">
+            <strong>What I do</strong>
+            <p class="muted">Semantic HTML,  responsive design, accessibility, and performance-first builds.</p>
+          </div>
+          <div class="card">
+            <strong>How I work</strong>
+            <p class="muted">I prefer component-driven design, scalable CSS architecture, and collaborative workflows with designers & engineers.</p>
+          </div>
+        </div>
+      </div>
+      <aside class="card">
+        <strong>free coding teacher</strong>
+        <ul class="muted" role="list" style="margin-top:10px;display:grid;gap:8px">
+          <li>Built a marketing site that improved conversions by 22%.</li>
+          <li>Created a small design system used across 4 projects.</li>
+          <li>Optimized CSS & images to cut page weight by 40%.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <h2 id="skills-title">Skills</h2>
+      <p class="lead">Tools & technologies I use regularly.</p>
+      <div class="skills">
+        <div class="skill">
+          <h3>Core</h3>
+          <p class="muted">HTML5, CSS3, Flexbox, </p>
+        </div>
+        <div class="skill" width="">
+          <h3>Styling</h3>
+          <p class="muted"> CSS Modules, Animations,</p>
+        </div>
+        <div class="skill" width="30">
+          <h3>Performance</h3>
+          <p class="muted"> Image optimization, Critical CSS</p>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Projects</h2>
+      <p class="lead">A few things I’m proud of — fully responsive and accessible.</p>
+      <div class="projects">
+        <article class="project card">
+          <a class="thumb" href="#" aria-label="Open Project One">
+            <img src="somali.png" alt="" loading="fast">
+          </a>
+          <div>
+            <h3>Project One</h3>
+            <p class="muted">Somaliland pay taxes office</p>
+            <div class="tags">
+              <span class="chip">HTML</span>
+              <span class="chip">CSS</span>
+              <span class="chip">Responsive</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project card">
+          <a class="thumb" href="#" aria-label="Open Project Two">
+            <img src="download (1).jpeg" loading="lazy">
+          </a>
+          <div>
+            <h3><a href="#">Project Two</a></h3>
+            <p class="muted">An elegant multi-section portfolio template using adope premier, and  typography. CSS only.</p>
+            <div class="tags">
+              <span class="chip">Css</span>
+              <span class="chip">javascript</span>
+              <span class="chip">html</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project card">
+          <a class="thumb" href="#" aria-label="Open Project Three">
+            <img src="download.png" alt="Screenshot of Project Three" loading="lazy">
+          </a>
+          <div>
+            <h3><a href="#">Project Three</a></h3>
+            <p class="muted">Dahab plus </p>
+            <div class="tags">
+              <span class="chip">Design System</span>
+              <span class="chip">Tokens</span>
+              <span class="chip">Docs</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience" aria-labelledby="exp-title">
+      <h2 id="exp-title">Experience</h2>
+      <p class="lead">Where I’ve worked and what I’ve done.</p>
+      <div class="timeline">
+        <div class="item">
+          <div class="dot" aria-hidden="true"></div>
+          <div>
+            <h3>Front‑End Developer ·</h3>
+            <p class="meta">Lorem ipsum dolor sit amet.</p>system
+            <p class="muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, voluptatem!.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="dot" aria-hidden="true"></div>
+          <div>
+            <h3>Web Designer.</h3>
+            <p class="meta">Aug 2021 — Dec 2022 · Hargeisa</p>
+            <p class="muted">Designed and implemented responsive layouts and component libraries for client websites.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <p class="lead">talk to me to get features</p>
+      <div class="contact-card">
+        <div class="panel">
+          <p><strong>Email</strong></p>
+          <p><a class="btn" href="mailto:you@hamdaluck.gamail.com">hamda luck697@gmail.com</a></p>
+          <div class="contact-links" style="margin-top:6px">
+            <a class="chip" href="https://face book.com/yourhandle" target="_blank" rel="noopener">facebook</a>
+            <a class="chip" href="https://instagram.io/adoontii___alle" target="_blank" rel="noopener">instagram</a>
+          </div>
+        </div>
+        <div class="panel">
+          <p><strong>Location</strong></p>
+          <p class="muted">Hargeisa.somaliland</p>
+          <p style="margin-top:6px"><strong>Résumé</strong></p>
+          <p class="muted"></p>
+        </div>
+      </div>
+    </section>
+
+    <p class="center" style="margin-top:24px"><a class="btn" href="#top">↑ Back to top</a></p>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <small>© <span id="year">2025</span> HAmda Mahamoud Adam</small>
+    </div>
+  </footer>
+</body>
+</html>
